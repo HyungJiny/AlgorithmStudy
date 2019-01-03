@@ -2,5 +2,8 @@
 output
 input.txt
 
+# vscode
+.vscode/
+
 # Mac OS cache
 .DS_Store
