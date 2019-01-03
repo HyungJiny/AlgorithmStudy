@@ -1,0 +1,6 @@
+# in/out file
+./output
+./input.txt
+
+# swap file
+*.swp
