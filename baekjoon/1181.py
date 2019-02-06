@@ -5,7 +5,8 @@ def main():
     words = []
     for _ in range(int(sys.stdin.readline())):
         words.append(sys.stdin.readline().strip())
-    print(words)
+    words = list(set(words))
+    print(sorted(words, key=lambda word: len(word)))
 
 if __name__ == "__main__":
     main()
