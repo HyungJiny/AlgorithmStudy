@@ -3,34 +3,33 @@ import sys
 
 def main():
     stack = []
-    operators = [0]
-    is_VPA = True
+    scores = []
+    is_VPS = True
+    is_closed = False
     for word in sys.stdin.readline().strip():
-        if word=='(': 
-            stack.append(')')
-            if operators[-1] == '+': operators.append(0)
-            operators.append('+')
-        elif word=='[': 
-            stack.append(']')
-            if operators[-1] == '+': operators.append(0)
-            operators.append('+')
-        elif word==')': 
-            if operators[-1] == '+': operators.append(1)
-            operators.append('*')
-            operators.append(2)
-        elif word==']':
-            if operators[-1] == '+': operators.append(1)
-            operators.append('*')
-            operators.append(3)
-    while len(operators) > 1:
-        print(operators)
-        if operators[1] == '+': 
-            number = int(operators[0]) + int(operators[2])
-            operators = [number] + operators[3:]
-        elif operators[1] == '*':
-            number = int(operators[0]) * int(operators[2])
-            operators = [number] + operators[3:]
-    print(operators)
+        if word == '(' or word == '[': 
+            stack.append(word)
+            if not is_closed: is_closed = True
+            else: scores.append(1)
+        elif word == ')':
+            if len(stack) == 0 or stack[-1] != '(':
+                is_VPS = False
+                break
+            stack.pop()
+            scores.append(scores.pop()*2)
+            is_closed = False
+        elif word == ']':
+            if len(stack) == 0 or stack[-1] != '[':
+                is_VPS = False
+                break
+            stack.pop()
+            scores.append(scores.pop()*3)
+            is_closed = False
+        if len(stack) == 0: scores = [sum(scores)]
+        print(scores)
+
+    if is_VPS: print(scores)
+    else: print(0)
 
 
 if __name__ == "__main__":
