@@ -1,6 +1,5 @@
 # io file 
 output
-input.txt
 
 # vscode
 .vscode/
@@ -12,3 +11,9 @@ input.txt
 venv/
 env/
 myenv/
+
+# data file
+*.txt
+*.json
+*.tsv
+*.csv
