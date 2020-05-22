@@ -6,6 +6,7 @@ output
 
 # Mac OS cache
 .DS_Store
+.ipynb_checkpoints
 
 # python venv
 venv/
